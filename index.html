@@ -6,26 +6,33 @@
 <title>TeamBuilding ROI | Team Building Stations and Carnival Stations</title>
 <style>
   :root{
+    --black:#16213E;
     --navy:#1F3864;
     --blue:#2E75B6;
+    --green:#3FBF63;
     --yellow:#FFD84D;
     --red:#E4572E;
-    --cream:#FDFBF6;
-    --ink:#1a2433;
+    --cream:#F6F8FB;
+    --ink:#15151d;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{font-family:Arial, Helvetica, sans-serif;background:var(--cream);color:var(--ink);line-height:1.5;}
 
   /* Top bar */
-  .topbar{background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:14px 5%;flex-wrap:wrap;gap:8px;}
+  .topbar{background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:12px 5%;flex-wrap:wrap;gap:8px;}
+  .topbar .logo{height:46px;display:block;}
   .wordmark{font-weight:900;font-size:1.15rem;letter-spacing:.5px;}
-  .wordmark span{color:var(--yellow);}
-  .topbar .contact{font-size:.85rem;opacity:.95;}
-  .topbar .contact b{color:var(--yellow);}
+  .wordmark span{color:var(--green);}
+  .topbar .contact{font-size:.9rem;opacity:.95;display:flex;align-items:center;gap:10px;}
+  .topbar .contact b{color:#fff;}
 
   /* Hero */
-  .hero{background:var(--navy);color:#fff;padding:64px 5% 0;position:relative;overflow:hidden;}
+  .hero{background:linear-gradient(135deg,#1F3864 0%,#2E75B6 70%,#3FBF63 130%);color:#fff;padding:64px 5% 0;position:relative;overflow:hidden;}
+  .hero .curve{position:absolute;top:24px;right:4%;width:min(420px,50vw);opacity:.7;pointer-events:none;}
+  .stars{margin-top:16px;color:#FFD84D;font-size:1rem;letter-spacing:1px;}
+  .hl-blue{color:var(--blue);}
+  .hl-green{color:var(--green);}
   .hero .eyebrow{display:inline-block;background:var(--blue);color:#fff;font-size:.75rem;font-weight:bold;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:22px;}
   .hero h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;line-height:1.08;max-width:820px;}
   .hl{background:linear-gradient(transparent 55%, var(--yellow) 55%, var(--yellow) 92%, transparent 92%);color:#fff;padding:0 4px;}
@@ -34,8 +41,10 @@
   .hero .cta-row{margin:30px 0 44px;display:flex;gap:14px;flex-wrap:wrap;}
   .btn{display:inline-block;font-weight:bold;text-decoration:none;padding:14px 26px;border-radius:8px;font-size:1rem;transition:transform .15s ease;}
   .btn:hover{transform:translateY(-2px);}
-  .btn-yellow{background:var(--yellow);color:var(--navy);}
-  .btn-outline{border:2px solid #fff;color:#fff;}
+  .btn-blue{background:var(--blue);color:#fff;border-radius:999px;}
+  .btn-green{background:var(--green);color:#fff;border-radius:999px;}
+  .btn-sm{padding:8px 18px;font-size:.85rem;}
+  .btn-outline{border:2px solid #fff;color:#fff;border-radius:999px;}
 
   /* Photo strip */
   .strip{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;}
@@ -44,35 +53,35 @@
   @media(max-width:760px){.strip{grid-template-columns:repeat(3,1fr);}.strip img{height:100px;}}
 
   /* Value banner */
-  .banner{background:var(--blue);color:#fff;padding:26px 5%;display:flex;gap:36px;justify-content:center;flex-wrap:wrap;text-align:center;}
+  .banner{background:linear-gradient(90deg,var(--blue),var(--green));color:#fff;padding:26px 5%;display:flex;gap:36px;justify-content:center;flex-wrap:wrap;text-align:center;}
   .banner div{font-size:1rem;}
-  .banner b{display:block;font-size:1.25rem;color:var(--yellow);}
+  .banner b{display:block;font-size:1.25rem;color:#fff;}
 
   /* Sections */
   section{padding:64px 5%;}
   .sec-head{max-width:1200px;margin:0 auto 10px;}
   .sec-head h2{font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:900;color:var(--navy);}
-  .sec-head h2 .tag{display:inline-block;background:var(--yellow);color:var(--navy);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;vertical-align:middle;margin-left:12px;transform:rotate(-1.5deg);}
+  .sec-head h2 .tag{display:inline-block;background:var(--green);color:#fff;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;vertical-align:middle;margin-left:12px;transform:rotate(-1.5deg);}
   .sec-head p{color:#48546a;max-width:640px;margin-top:8px;}
 
   .search-wrap{max-width:1200px;margin:18px auto 26px;}
-  .search-wrap input{width:100%;max-width:420px;padding:12px 16px;border:2px solid var(--navy);border-radius:8px;font-size:1rem;font-family:Arial, Helvetica, sans-serif;background:#fff;}
+  .search-wrap input{width:100%;max-width:420px;padding:12px 16px;border:2px solid var(--blue);border-radius:8px;font-size:1rem;font-family:Arial, Helvetica, sans-serif;background:#fff;}
 
   .grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px;}
 
   .card{background:#fff;border:1px solid #e2e7ef;border-radius:12px;padding:18px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow .15s ease, transform .15s ease;}
   .card:hover{box-shadow:0 8px 20px rgba(31,56,100,.12);transform:translateY(-2px);}
-  .card .icon{flex:0 0 46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.35rem;}
+  .card .icon{flex:0 0 46px;height:46px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.35rem;}
   .card h3{font-size:1rem;color:var(--navy);margin-bottom:3px;}
   .card p{font-size:.85rem;color:#54617a;}
 
   /* Carnival ticket cards */
-  #carnival .card{border:none;border-radius:10px;position:relative;background:#fff;box-shadow:0 2px 6px rgba(31,56,100,.08);border-top:5px solid var(--red);}
-  #carnival .card::before,#carnival .card::after{content:"";position:absolute;width:14px;height:14px;background:var(--cream);border-radius:50%;top:50%;margin-top:-7px;}
+  #carnival .card{border:none;border-radius:10px;position:relative;background:#fff;box-shadow:0 2px 6px rgba(31,56,100,.08);border-top:5px solid var(--green);}
+  #carnival .card::before,#carnival .card::after{content:"";position:absolute;width:14px;height:14px;background:#EFF8F1;border-radius:50%;top:50%;margin-top:-7px;}
   #carnival .card::before{left:-7px;}
   #carnival .card::after{right:-7px;}
-  #carnival .card .icon{background:var(--red);}
-  #carnival{background:#fff7ec;}
+  #carnival .card .icon{background:var(--green);}
+  #carnival{background:#EFF8F1;}
 
   /* Bundles */
   .bundles{background:var(--navy);color:#fff;}
@@ -88,10 +97,11 @@
   .price i{color:#C00000;}
 
   /* Footer */
-  footer{background:var(--navy);color:#fff;padding:44px 5%;text-align:center;}
+  footer{background:linear-gradient(135deg,#1F3864,#16213E);color:#fff;padding:44px 5%;text-align:center;}
+  footer img.logo{height:60px;margin:0 auto 14px;display:block;}
   footer .wordmark{font-size:1.4rem;margin-bottom:10px;}
   footer p{font-size:.9rem;color:#c9d7ec;}
-  footer a{color:var(--yellow);text-decoration:none;}
+  footer a{color:var(--green);text-decoration:none;}
   .plink{display:inline-block;margin-top:6px;font-size:.78rem;font-weight:bold;color:var(--blue);background:var(--yellow);text-decoration:underline;padding:1px 7px;border-radius:3px;}
   body.no-photo-links .plink{display:none;}
   .hidden{display:none !important;}
@@ -100,15 +110,18 @@
 <body>
 
 <div class="topbar">
-  <div class="wordmark">TEAMBUILDING <span>ROI</span></div>
-  <div class="contact">Call <b>855-832-6764</b> &nbsp;|&nbsp; teambuildingroi.com &nbsp;|&nbsp; teamfun.now</div>
+  <a href="https://teambuildingroi.com/"><img class="logo" src="https://teambuildingroi.com/wp-content/uploads/2022/10/tbroi-logos-300-black-600x388-1.png" alt="TeamBuilding ROI" onerror="this.outerHTML='<b style=color:#fff>TEAMBUILDING ROI</b>'"></a>
+  <div class="contact">📞 <b>855-832-6764</b> &nbsp;&nbsp;<a class="btn btn-blue btn-sm" href="https://teambuildingroi.com/request-a-quote/">Request a Quote</a></div>
 </div>
 
 <header class="hero">
-  <h1>TeamBuilding ROI <span class="hl">Staffed</span> Event Stations!</h1>
+  <svg class="curve" viewBox="0 0 600 80" aria-hidden="true"><path d="M10 70 Q 300 -40 590 60" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="2 14" stroke-linecap="round"/></svg>
+  <h1>TeamBuilding ROI <span class="hl-blue">Staffed</span> Event <span class="hl-green">Stations!</span></h1>
+  <p class="stars">★★★★★ &nbsp;Rated 4.9/5 by HR leaders and teams</p>
   <div class="cta-row" style="margin-top:30px;">
-    <a class="btn btn-yellow" href="#teambuilding">Team Building Stations</a>
-    <a class="btn btn-outline" href="#carnival">Carnival Stations</a>
+    <a class="btn btn-blue" href="#teambuilding">Team Building Stations</a>
+    <a class="btn btn-green" href="#carnival">Carnival Stations</a>
+    <a class="btn btn-outline" href="https://teambuildingroi.com/request-a-quote/">Plan Your Event Today</a>
   </div>
   <div class="strip">
     <img src="https://www.interactivegame.com/images/carousel/team-building-01.jpg" alt="Team building event" onerror="this.style.display='none'">
@@ -216,7 +229,7 @@
 </section>
 
 <footer>
-  <div class="wordmark">TEAMBUILDING <span style="color:var(--yellow)">ROI</span></div>
+  <img class="logo" src="https://teambuildingroi.com/wp-content/uploads/2022/10/tbroi-logos-300-black-600x388-1.png" alt="TeamBuilding ROI" onerror="this.outerHTML='<b>TEAMBUILDING ROI</b>'">
   <p>Kelly Spain | VP of Fun | Playmaker | TeamBuilding ROI</p>
   <p>Main: <a href="tel:8558326764">855-832-6764</a> | <a href="mailto:kelly@tbroi.com">kelly@tbroi.com</a> | <a href="https://teambuildingroi.com">teambuildingroi.com</a> | teamfun.now</p>
   <p style="margin-top:14px;font-size:.75rem;opacity:.6;">Temporary presentation page. Not for public publication.</p>
