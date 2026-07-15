@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamBuilding ROI | Team Building Stations and Carnival Stations</title>
+<style>
+  :root{
+    --navy:#1F3864;
+    --blue:#2E75B6;
+    --yellow:#FFD84D;
+    --red:#E4572E;
+    --cream:#FDFBF6;
+    --ink:#1a2433;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:Arial, Helvetica, sans-serif;background:var(--cream);color:var(--ink);line-height:1.5;}
+
+  /* Top bar */
+  .topbar{background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:14px 5%;flex-wrap:wrap;gap:8px;}
+  .wordmark{font-weight:900;font-size:1.15rem;letter-spacing:.5px;}
+  .wordmark span{color:var(--yellow);}
+  .topbar .contact{font-size:.85rem;opacity:.95;}
+  .topbar .contact b{color:var(--yellow);}
+
+  /* Hero */
+  .hero{background:var(--navy);color:#fff;padding:64px 5% 0;position:relative;overflow:hidden;}
+  .hero .eyebrow{display:inline-block;background:var(--blue);color:#fff;font-size:.75rem;font-weight:bold;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:22px;}
+  .hero h1{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:900;line-height:1.08;max-width:820px;}
+  .hl{background:linear-gradient(transparent 55%, var(--yellow) 55%, var(--yellow) 92%, transparent 92%);color:#fff;padding:0 4px;}
+  .hero h1 .hl{color:var(--navy);background:var(--yellow);display:inline-block;transform:rotate(-1.2deg);padding:2px 12px;border-radius:4px;}
+  .hero p.sub{margin-top:20px;font-size:1.15rem;max-width:640px;color:#dbe6f5;}
+  .hero .cta-row{margin:30px 0 44px;display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{display:inline-block;font-weight:bold;text-decoration:none;padding:14px 26px;border-radius:8px;font-size:1rem;transition:transform .15s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-yellow{background:var(--yellow);color:var(--navy);}
+  .btn-outline{border:2px solid #fff;color:#fff;}
+
+  /* Photo strip */
+  .strip{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;}
+  .strip img{width:100%;height:150px;object-fit:cover;display:block;filter:saturate(1.05);}
+  .strip img:nth-child(even){transform:translateY(14px);}
+  @media(max-width:760px){.strip{grid-template-columns:repeat(3,1fr);}.strip img{height:100px;}}
+
+  /* Value banner */
+  .banner{background:var(--blue);color:#fff;padding:26px 5%;display:flex;gap:36px;justify-content:center;flex-wrap:wrap;text-align:center;}
+  .banner div{font-size:1rem;}
+  .banner b{display:block;font-size:1.25rem;color:var(--yellow);}
+
+  /* Sections */
+  section{padding:64px 5%;}
+  .sec-head{max-width:1200px;margin:0 auto 10px;}
+  .sec-head h2{font-size:clamp(1.7rem,3.5vw,2.5rem);font-weight:900;color:var(--navy);}
+  .sec-head h2 .tag{display:inline-block;background:var(--yellow);color:var(--navy);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:4px;vertical-align:middle;margin-left:12px;transform:rotate(-1.5deg);}
+  .sec-head p{color:#48546a;max-width:640px;margin-top:8px;}
+
+  .search-wrap{max-width:1200px;margin:18px auto 26px;}
+  .search-wrap input{width:100%;max-width:420px;padding:12px 16px;border:2px solid var(--navy);border-radius:8px;font-size:1rem;font-family:Arial, Helvetica, sans-serif;background:#fff;}
+
+  .grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:16px;}
+
+  .card{background:#fff;border:1px solid #e2e7ef;border-radius:12px;padding:18px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow .15s ease, transform .15s ease;}
+  .card:hover{box-shadow:0 8px 20px rgba(31,56,100,.12);transform:translateY(-2px);}
+  .card .icon{flex:0 0 46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.35rem;}
+  .card h3{font-size:1rem;color:var(--navy);margin-bottom:3px;}
+  .card p{font-size:.85rem;color:#54617a;}
+
+  /* Carnival ticket cards */
+  #carnival .card{border:none;border-radius:10px;position:relative;background:#fff;box-shadow:0 2px 6px rgba(31,56,100,.08);border-top:5px solid var(--red);}
+  #carnival .card::before,#carnival .card::after{content:"";position:absolute;width:14px;height:14px;background:var(--cream);border-radius:50%;top:50%;margin-top:-7px;}
+  #carnival .card::before{left:-7px;}
+  #carnival .card::after{right:-7px;}
+  #carnival .card .icon{background:var(--red);}
+  #carnival{background:#fff7ec;}
+
+  /* Bundles */
+  .bundles{background:var(--navy);color:#fff;}
+  .bundles .sec-head h2{color:#fff;}
+  .bundles .sec-head p{color:#c9d7ec;}
+  .bundle-grid{max-width:1200px;margin:30px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+  .bundle{background:#26456f;border-radius:14px;padding:26px;border:1px solid #3a5c8c;}
+  .bundle h3{color:var(--yellow);font-size:1.25rem;margin-bottom:10px;}
+  .bundle ul{list-style:none;margin:0 0 16px;}
+  .bundle li{padding:5px 0 5px 26px;position:relative;font-size:.92rem;color:#e6eefb;}
+  .bundle li::before{content:"★";position:absolute;left:0;color:var(--yellow);}
+  .price{background:var(--yellow);color:var(--navy);display:inline-block;padding:4px 10px;border-radius:4px;font-weight:bold;}
+  .price i{color:#C00000;}
+
+  /* Footer */
+  footer{background:var(--navy);color:#fff;padding:44px 5%;text-align:center;}
+  footer .wordmark{font-size:1.4rem;margin-bottom:10px;}
+  footer p{font-size:.9rem;color:#c9d7ec;}
+  footer a{color:var(--yellow);text-decoration:none;}
+  .plink{display:inline-block;margin-top:6px;font-size:.78rem;font-weight:bold;color:var(--blue);background:var(--yellow);text-decoration:underline;padding:1px 7px;border-radius:3px;}
+  body.no-photo-links .plink{display:none;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">TEAMBUILDING <span>ROI</span></div>
+  <div class="contact">Call <b>855-832-6764</b> &nbsp;|&nbsp; teambuildingroi.com &nbsp;|&nbsp; teamfun.now</div>
+</div>
+
+<header class="hero">
+  <h1>TeamBuilding ROI <span class="hl">Staffed</span> Event Stations!</h1>
+  <div class="cta-row" style="margin-top:30px;">
+    <a class="btn btn-yellow" href="#teambuilding">Team Building Stations</a>
+    <a class="btn btn-outline" href="#carnival">Carnival Stations</a>
+  </div>
+  <div class="strip">
+    <img src="https://www.interactivegame.com/images/carousel/team-building-01.jpg" alt="Team building event" onerror="this.style.display='none'">
+    <img src="https://www.interactivegame.com/images/carousel/all-games-01.jpg" alt="Event games" onerror="this.style.display='none'">
+    <img src="https://www.interactivegame.com/images/carousel/team-building-02.jpg" alt="Team building event" onerror="this.style.display='none'">
+    <img src="https://www.interactivegame.com/images/carousel/all-games-02.jpg" alt="Event games" onerror="this.style.display='none'">
+    <img src="https://www.interactivegame.com/images/carousel/team-building-03.jpg" alt="Team building event" onerror="this.style.display='none'">
+    <img src="https://www.interactivegame.com/images/carousel/all-games-04.jpg" alt="Event games" onerror="this.style.display='none'">
+  </div>
+</header>
+
+<div class="banner">
+  <div><b>Staffed</b>Every station comes with trained TBROI facilitators</div>
+  <div><b>Scored</b>Leaderboards, brackets, and prizes built in</div>
+  <div><b>Hosted</b>An emcee keeps the energy up from kickoff to finale</div>
+</div>
+
+<section id="teambuilding">
+  <div class="sec-head">
+    <h2>Team Building Stations <span class="tag">35 to choose from</span></h2>
+    <p>Head to head challenges that get everyone off their phones and into the game. Mix and match for groups from 6 to 6,000.</p>
+  </div>
+  <div class="search-wrap"><input type="text" placeholder="Search all stations..." oninput="filterCards(this.value)"></div>
+  <div class="grid">
+    <div class="card"><div class="icon">🪓</div><div><h3>Axe Throwing LED</h3><p>Glow in the dark axe throwing with blacklights and soft rubber axes.</p><a class="plink" href="https://www.interactivegame.com/games/axe-throwing-led/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🪓</div><div><h3>Axe Throwing Station</h3><p>Inflatable axe range. Safe axes, serious bragging rights.</p><a class="plink" href="https://www.interactivegame.com/games/axe-throwing-station/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🏀</div><div><h3>Basketball Hoop (Adjustable)</h3><p>Heavy duty hoop set to any height for shootouts and skills contests.</p><a class="plink" href="https://www.interactivegame.com/games/basketball-hoop-adjustable/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🏀</div><div><h3>Basketball Hoop (Regulation)</h3><p>Full regulation hoop for the real competitors on your team.</p><a class="plink" href="https://www.interactivegame.com/games/basketball-hoop/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🛁</div><div><h3>Bathtub Racers</h3><p>Motorized bathtubs on wheels. Hilarious relay racing.</p><a class="plink" href="https://www.interactivegame.com/games/bathtub-racers/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🏀</div><div><h3>Big Shot Basketball</h3><p>Jumbo hoops, jumbo ball, jumbo laughs.</p><a class="plink" href="https://www.interactivegame.com/games/big-shot-basketball/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">⚽</div><div><h3>Big Shot Soccer</h3><p>Supersized soccer showdown the whole group can play.</p><a class="plink" href="https://www.interactivegame.com/games/big-shot-soccer/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎱</div><div><h3>Bingo</h3><p>Classic cage and cards, hosted with prizes on the line.</p><a class="plink" href="https://www.interactivegame.com/games/bingo-cage-cards/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎳</div><div><h3>Bocce Bowling</h3><p>Bocce lanes turned into a full bowling battle.</p><a class="plink" href="https://www.interactivegame.com/games/bocce-bowling/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎳</div><div><h3>Bowling Alley</h3><p>Portable lanes. Leave no pin standing.</p><a class="plink" href="https://www.interactivegame.com/games/bowling-alley/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🥊</div><div><h3>Boxing Ring</h3><p>Mini ring for photo ops, your DJ, or a champion announcement.</p><a class="plink" href="https://www.interactivegame.com/games/boxing-ring/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">⛳</div><div><h3>Bucket Golf</h3><p>Portable par 3 course. Zero golf experience required.</p><a class="plink" href="https://www.interactivegame.com/games/bucket-golf/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🧠</div><div><h3>Company Trivia Challenge</h3><p>Buzzers, lights, and trivia customized to your company, hosted by TBROI.</p><a class="plink" href="https://www.interactivegame.com/games/brain-teaser/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🥌</div><div><h3>Curling Lane</h3><p>Brooms, rocks, and surprisingly intense sweeping.</p><a class="plink" href="https://www.interactivegame.com/games/curling-lane/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🏈</div><div><h3>Football Training Course</h3><p>Drills, agility runs, and end zone celebrations.</p><a class="plink" href="https://www.interactivegame.com/games/football-training-course/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🏓</div><div><h3>Four Way Ping Pong</h3><p>Four players, one table, total chaos.</p><a class="plink" href="https://www.interactivegame.com/games/four-way-ping-pong/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎤</div><div><h3>Game Show Mania</h3><p>Full game show system with buzzers, lights, and a live host.</p><a class="plink" href="https://www.interactivegame.com/games/game-show-mania/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">⛳</div><div><h3>Golf Simulator</h3><p>Play famous courses without leaving the venue.</p><a class="plink" href="https://www.interactivegame.com/games/golf-simulator/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🚽</div><div><h3>Gotta Go Racers</h3><p>Motorized racing toilets. Yes, really.</p><a class="plink" href="https://www.interactivegame.com/games/gotta-go-racers/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🧸</div><div><h3>Bear Building Station</h3><p>Guests stuff and dress their own keepsake bear.</p><a class="plink" href="https://www.interactivegame.com/games/huggable-snuggable-bear-building-station/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🔠</div><div><h3>Interactive Word Find</h3><p>An electrified word hunt that gets teams talking fast.</p><a class="plink" href="https://www.interactivegame.com/games/interactive-word-find/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎤</div><div><h3>Karaoke</h3><p>Over 100,000 songs and zero judgment.</p><a class="plink" href="https://www.interactivegame.com/games/karaoke/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🌈</div><div><h3>LED Mini Golf</h3><p>A glowing 9 hole course that works day or night.</p><a class="plink" href="https://www.interactivegame.com/games/led-golf/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">⛏️</div><div><h3>Mining For Gold</h3><p>Pan for treasure at a real sluice station.</p><a class="plink" href="https://www.interactivegame.com/games/mining-for-gold/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🟡</div><div><h3>Ocean of Balls</h3><p>Dive into a sea of color. Adults welcome.</p><a class="plink" href="https://www.interactivegame.com/games/ocean-of-balls/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">📸</div><div><h3>Photo Kiosk</h3><p>Compact photo station with instant shareable shots.</p><a class="plink" href="https://www.interactivegame.com/games/photo-kiosk/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🥒</div><div><h3>Pickleball</h3><p>The fastest growing sport in America, set up anywhere.</p><a class="plink" href="https://www.interactivegame.com/games/pickleball/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🧺</div><div><h3>Picnic Game Package</h3><p>Classic lawn games bundled for your company picnic.</p><a class="plink" href="https://www.interactivegame.com/games/picnic-game-package/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🏎️</div><div><h3>Pit Stop Challenge</h3><p>Race replica cars in a timed pit crew battle.</p><a class="plink" href="https://www.interactivegame.com/games/pit-stop-challenge/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🤠</div><div><h3>Rodeo Roper</h3><p>Lasso practice for city slickers.</p><a class="plink" href="https://www.interactivegame.com/games/rodeo-roper/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🐎</div><div><h3>Roll a Ball Racing</h3><p>Roll to move your horse down the track. A derby classic.</p><a class="plink" href="https://www.interactivegame.com/games/roll-a-ball-racing/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🛼</div><div><h3>Roller Skate Rink</h3><p>A pop up rink that turns any space into a party.</p><a class="plink" href="https://www.interactivegame.com/games/roller-skate-rink/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🗺️</div><div><h3>Scavenger Hunt</h3><p>A guided hunt packed with local history and team challenges.</p><a class="plink" href="https://www.interactivegame.com/games/scavenger-hunt/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🦺</div><div><h3>Sticky Drag Race</h3><p>Velcro suits and sprint runways. Instant laughter.</p><a class="plink" href="https://www.interactivegame.com/games/sticky-drag-race/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🐄</div><div><h3>Udder Relay</h3><p>Out milk your coworkers on the Bessie twins.</p><a class="plink" href="https://www.interactivegame.com/games/udder-relay/" target="_blank" rel="noopener">see photo</a></div></div>
+  </div>
+</section>
+
+<section id="carnival">
+  <div class="sec-head">
+    <h2>Carnival Stations <span class="tag">Step right up</span></h2>
+    <p>Every classic from the county fair, staffed by our crew and stocked with real prizes. String a few together and you have a midway.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="icon">🎳</div><div><h3>6 Pin Bowling</h3><p>Three balls, six pins, shuffleboard style skill.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-6-pin-bowling/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🪙</div><div><h3>Bank Shot</h3><p>Pitch your coin and land the stripe to win.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-bank-shot/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🤡</div><div><h3>Bean Bag Toss</h3><p>Feed the clown, win the prize.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-bean-bag-toss/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🥫</div><div><h3>Can Smash</h3><p>Two throws to clear the whole pyramid.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-can-smash/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">⚪</div><div><h3>Connect 3</h3><p>Bounce whiffle balls into a winning line.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-connect-3/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🚗</div><div><h3>Crazy Driver</h3><p>Steer a ball down a tilting road. Three skill levels.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-crazy-driver/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎯</div><div><h3>Cross Bow</h3><p>Suction darts, a tiny bullseye, and big glory.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-cross-bow/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎈</div><div><h3>Dart Balloon</h3><p>Three darts, three pops, first prize.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-dart-balloon/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🤡</div><div><h3>Down the Clown</h3><p>Three bean bags versus three clowns.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-down-the-clown/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🔄</div><div><h3>Flap Attack</h3><p>Race an opponent to roll balls uphill and flip your flaps.</p><a class="plink" href="https://www.interactivegame.com/games/flap-attack/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🐸</div><div><h3>Flip a Frog</h3><p>Hammer launch a plush frog into the bucket.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-flip-a-frog/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">⛰️</div><div><h3>King of the Hill</h3><p>Land your ball on top and make it stay.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-king-of-the-hill/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🦎</div><div><h3>Leaping Lizards</h3><p>Launch your lizard onto the log to win.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-leaping-lizards/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🥛</div><div><h3>Milk Bottles</h3><p>The classic. Three throws for a full knockdown.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-milk-bottles/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🥛</div><div><h3>Milk Can</h3><p>Sink three in the can for the top shelf prize.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-milk-can/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">⛳</div><div><h3>Carnival Mini Golf</h3><p>A full 9 hole course, carnival style.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-mini-golf/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">👾</div><div><h3>Monster Blast</h3><p>Blast the monsters. All ages welcome.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-monster-blast/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🐧</div><div><h3>Penguin Feeding Frenzy</h3><p>Toss bean bags into hungry penguin mouths.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-penguin-feeding-frenzy/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">💍</div><div><h3>Ring the Bottle</h3><p>Five rings, one bottle, pure suspense.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-ring-the-bottle/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎲</div><div><h3>Rolldown</h3><p>Roll for the winning combo across changing scoreboards.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-rolldown/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎳</div><div><h3>Roller Bowler</h3><p>Roll it up and make it stay. Easier said than done.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-roller-bowler/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">⚫</div><div><h3>Skeet</h3><p>Roll for the smallest, highest scoring hole.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-skeet/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🐍</div><div><h3>Snake Pit</h3><p>A true challenge for steady hands.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-snake-pit/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🧊</div><div><h3>Strike Zone</h3><p>Bowling with pucks. Slide to flip the pins.</p><a class="plink" href="https://www.interactivegame.com/games/strike-zone/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🧸</div><div><h3>Teddy Bear Toss</h3><p>Ring the bear stand and take home the glory.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-game-teddy-bear-toss/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎡</div><div><h3>Prize Wheel</h3><p>Spin to win. Perfect for giveaways all event long.</p><a class="plink" href="https://www.interactivegame.com/games/prize-wheel/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🔨</div><div><h3>High Striker (Adult)</h3><p>The classic test of strength, bell included.</p><a class="plink" href="https://www.interactivegame.com/games/high-striker-adult/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🔨</div><div><h3>High Striker (Junior)</h3><p>Kid sized strength test with full sized pride.</p><a class="plink" href="https://www.interactivegame.com/games/high-striker-junior/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">⚡</div><div><h3>Wacky Wire</h3><p>Steady hands beat the buzzer.</p><a class="plink" href="https://www.interactivegame.com/games/wacky-wire/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🔴</div><div><h3>Giant Plinko</h3><p>Drop, bounce, win.</p><a class="plink" href="https://www.interactivegame.com/games/giant-plinko/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🌀</div><div><h3>Megawire</h3><p>A giant wire challenge for seasoned carnival pros.</p><a class="plink" href="https://www.interactivegame.com/games/megawire/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">💦</div><div><h3>Dunk Tank</h3><p>Put the boss on the hot seat.</p><a class="plink" href="https://www.interactivegame.com/games/dunk-tank/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🪞</div><div><h3>Fun House Mirrors</h3><p>Guaranteed laughs, zero skill required.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-fun-house-mirrors/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎁</div><div><h3>Carnival Prize Packs</h3><p>Plush and toy bundles so every station pays out real prizes.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-prize-packs/" target="_blank" rel="noopener">see photo</a></div></div>
+    <div class="card"><div class="icon">🎪</div><div><h3>Carnival Tents</h3><p>Candy striped booths for the full midway look.</p><a class="plink" href="https://www.interactivegame.com/games/carnival-tents/" target="_blank" rel="noopener">see photo</a></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wordmark">TEAMBUILDING <span style="color:var(--yellow)">ROI</span></div>
+  <p>Kelly Spain | VP of Fun | Playmaker | TeamBuilding ROI</p>
+  <p>Main: <a href="tel:8558326764">855-832-6764</a> | <a href="mailto:kelly@tbroi.com">kelly@tbroi.com</a> | <a href="https://teambuildingroi.com">teambuildingroi.com</a> | teamfun.now</p>
+  <p style="margin-top:14px;font-size:.75rem;opacity:.6;">Temporary presentation page. Not for public publication.</p>
+</footer>
+
+<script>
+// Set to false before sharing if you want to hide all vendor photo links.
+const SHOW_PHOTO_LINKS = true;
+if(!SHOW_PHOTO_LINKS){document.body.classList.add('no-photo-links');}
+
+function filterCards(q){
+  q = q.trim().toLowerCase();
+  document.querySelectorAll('.card').forEach(function(c){
+    c.classList.toggle('hidden', q && !c.textContent.toLowerCase().includes(q));
+  });
+}
+</script>
+
+</body>
+</html>
